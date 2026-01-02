@@ -202,7 +202,7 @@ export default function Projects() {
           ))}
         </motion.div>
         
-        {/* Stats Section */}
+        {/* Stats Section
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -227,7 +227,7 @@ export default function Projects() {
               <div className="text-sm text-muted-foreground">{stat.label}</div>
             </motion.div>
           ))}
-        </motion.div>
+        </motion.div> */}
 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

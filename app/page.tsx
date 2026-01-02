@@ -62,10 +62,7 @@ export default function Home() {
       <section className="py-20 bg-card border-t border-border">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8 text-foreground">About Me</h2>
-          {/* <h2 className="text-3xl font-bold text-center mb-8">About Me</h2> */}
-          {/* change 0017 */}
-          <p className="text-lg text-foreground/70 leading-relaxed">
-          {/* <p className="text-lg text-gray-700 leading-relaxed"> */}
+          <p className="text-lg text-foreground/70 leading-relaxed text-center max-w-2xl mx-auto">
             I'm a passionate developer with expertise in building modern web applications.
             With a strong foundation in both frontend and backend technologies, I create
             efficient, scalable, and user-friendly solutions.
