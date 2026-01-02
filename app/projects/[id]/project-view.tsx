@@ -85,120 +85,44 @@ export function ProjectView({ project }: ProjectViewProps) {
             <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
             <span className="font-medium">Back to Projects</span>
           </button>
-          <div className='inline-flex items-center'>
-            <ThemeToggle/>
-          </div>
-        </div>
-      </header> */}
-      <header className="bg-card border-b border-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="flex items-center justify-between">
-              
-              {/* Left */}
-              <button
-                onClick={() => router.back()}
-                className="inline-flex items-center text-foreground hover:text-primary transition-colors group"
-              >
-                <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
-                <span className="font-medium">Back to Projects</span>
-              </button>
-
-              {/* Right */}
-              <div className="inline-flex text-white-500 items-center">
-                <ThemeToggle />
               </div>
-
             </div>
           </div>
         </header>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Project Header */}
-        <div className="bg-card rounded-xl shadow-sm p-6 mb-8 border border-border">
-          <div className="flex flex-col md:flex-row justify-between gap-6">
-            <div className="flex-1">
-              <div className="flex items-center gap-3 mb-4">
-                {project.logo && (
-                  <img 
-                    src={project.logo} 
-                    alt={`${project.title} Logo`} 
-                    className="w-12 h-12 object-contain"
-                  />
-                )}
-                <h1 className="text-3xl font-bold text-foreground">
-                  {project.title}
-                </h1>
-              </div>
-              
-              <p className="text-muted-foreground mb-6 text-lg">
-                {project.tagline || project.description.split('.')[0]}.
-              </p>
-              
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech: string, i: number) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1.5 bg-muted text-muted-foreground rounded-full text-sm font-medium border border-border"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto">
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-5 py-2.5 border border-border rounded-lg hover:bg-accent bg-yellow-500 transition-colors group"
+        {/* Project Preview */}
+        <div className="mt-10">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg sm:text-xl font-bold text-foreground">{project.title}</h2>
+            <div className="flex items-center gap-2">
+              <div className="flex items-center bg-gray-100 rounded-md p-1">
+                <button
+                  onClick={() => {
+                    setDeviceType('normal');
+                    setShowResponsiveControls(false);
+                  }}
+                  className={`p-2 rounded ${deviceType === 'normal' ? 'bg-white shadow' : ''}`}
+                  title="Normal view"
                 >
-                  <Github className="w-5 h-5 mr-2 text-foreground group-hover:text-accent-foreground" />
-                  <span className="font-medium text-foreground">View Code</span>
-                </a>
-              )}
-              <a
-                href={project.demoUrl || "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-5 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-colors shadow-sm"
-              >
-                <ExternalLink className="w-4 h-4 mr-2" />
-                <span className="font-medium">Live Demo</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-card rounded-xl shadow-lg p-6 mb-8 border border-border">
-          <h2 className="text-2xl font-semibold text-foreground mb-4">Project Overview</h2>
-          <p className="text-muted-foreground mb-6">
-            {project.description}
-          </p>
-
-          <div className="mt-8">
-            <h3 className="text-xl font-semibold text-foreground mb-4">Key Features</h3>
-            <ul className="space-y-3">
-              {project.features.map((feature, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="text-green-500 mr-2 mt-1">✓</span>
-                  <span className="text-foreground">{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Project Preview */}
-          <div className="mt-10">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-semibold text-foreground">Live Preview</h3>
-              {/* <div className="flex items-start gap-2"> */}
-              <div className="flex items-center gap-2">
-                <div className="flex items-center bg-gray-100 rounded-md p-1">
+                  <span className={`text-xs font-medium ${deviceType === 'normal' ? 'text-blue-600' : 'text-gray-500'}`}>Normal</span>
+                </button>
+                <button
+                  onClick={() => setDeviceType('desktop')}
+                  className={`p-2 rounded ${deviceType === 'desktop' ? 'bg-white shadow' : ''}`}
+                  title="Desktop view"
+                >
+                  <Monitor className={`w-4 h-4 ${deviceType === 'desktop' ? 'text-blue-600' : 'text-gray-500'}`} />
+                </button>
+                <div className="relative">
                   <button
-                    onClick={() => {
-                      setDeviceType('normal');
+                   onClick={() => {
+                      if (deviceType !== 'responsive') {
+                        // Enter responsive mode + open dropdown
+                        setDeviceType('responsive');
+                        setShowResponsiveControls(true);
+                      } else {
+                        // Already in responsive → just toggle dropdown
+                        setShowResponsiveControls(prev => !prev);
+                      }
                       setShowResponsiveControls(false);
                     }}
                     className={`p-2 rounded ${deviceType === 'normal' ? 'bg-white shadow' : ''}`}

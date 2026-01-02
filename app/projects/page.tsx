@@ -28,14 +28,27 @@ const cardHover = {
 export default function Projects() {
   const router = useRouter();
   return (
-    <div className="min-h-screen bg-background">
-      
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        <header className="bg-card border-b border-border">
+    <div className="min-h-screen bg-background flex flex-col">
+      <header className="bg-card border-b border-border sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div className="flex items-center justify-between">
             <button
+              onClick={() => router.back()}
+              className="inline-flex items-center text-foreground hover:text-primary transition-colors group"
+              aria-label="Go back"
+            >
+              <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
+              <span className="font-medium">Back</span>
+            </button>
+            <ThemeToggle />
+          </div>
+        </div>
+      </header>
+      
+      <main className="flex-1 flex flex-col">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
               onClick={() => router.back()}
               className="inline-flex items-center text-foreground hover:text-primary transition-colors group"
               aria-label="Go back"
@@ -257,7 +270,8 @@ export default function Projects() {
             </Link>
           </div>
         </motion.div>
-      </div>
+        </div>
+      </main>
     </div>
   );
 }

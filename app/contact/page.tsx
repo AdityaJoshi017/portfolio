@@ -1,10 +1,13 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Github, Linkedin, Twitter, Mail, Instagram } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { useEffect } from 'react';
 
 export default function ContactPage() {
+  const router = useRouter();
   const socialLinks = [
     {
       name: 'GitHub',
@@ -38,14 +41,25 @@ export default function ContactPage() {
     },
   ];
 
+  const handleBack = () => {
+    // Use window.history to check if we can go back
+    if (window.history.length > 1) {
+      router.back();
+    } else {
+      // If no history, fall back to home
+      router.push('/');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-sm border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <button
-              onClick={() => window.history.back()}
+              onClick={handleBack}
               className="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent transition-colors"
+              aria-label="Go back to previous page"
             >
               <svg
                 className="h-4 w-4 flex-shrink-0"

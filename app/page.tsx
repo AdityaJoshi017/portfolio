@@ -12,7 +12,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <header className="bg-card border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex justify-end p-3 sm:p-4">
             <button 
               onClick={() => router.back()} 
               className="inline-flex items-center text-foreground hover:text-primary transition-colors group"
@@ -26,7 +26,7 @@ export default function Home() {
       </header>
       {/* Hero Section */}
       <section className="py-8 sm:py-12 md:py-20 text-center px-4">
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-blue-900 mb-4 sm:mb-6">
+        <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-blue-900 mb-3 sm:mb-6">
           Hi, I'm{' '}
           <span className="text-blue-600 relative">
             <TypingEffect 
@@ -40,13 +40,13 @@ export default function Home() {
             />
           </span>
         </h1>
-        <div className="min-h-[24px] sm:min-h-[28px] mb-3 sm:mb-4">
-          <p className="text-lg sm:text-xl text-foreground/70 max-w-[90%] sm:max-w-2xl mx-auto">
+        <div className="min-h-[20px] sm:min-h-[28px] mb-2 sm:mb-4">
+          <p className="text-lg sm:text-xl text-foreground/70 mb-3 sm:mb-4 max-w-2xl mx-auto leading-snug sm:leading-normal">
             Crafting digital experiences with code and creativity
           </p>
         </div>
-        <div className="min-h-[60px] sm:min-h-[72px] mb-6 sm:mb-8">
-          <p className="text-sm sm:text-base md:text-lg text-gray-500 max-w-[95%] sm:max-w-2xl mx-auto">
+        <div className="min-h-[40px] sm:min-h-[72px] mb-4 sm:mb-8">
+          <p className="text-xs sm:text-base md:text-lg text-gray-500 max-w-[95%] sm:max-w-2xl mx-auto leading-snug sm:leading-normal">
             <TypingEffect
               texts={[
                 'AI/ML Developer | Java & Python Enthusiast | Frontend Developer',
@@ -58,7 +58,7 @@ export default function Home() {
             />
           </p>
         </div>
-        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-md mx-auto">
+        <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 w-full max-w-xs sm:max-w-md mx-auto">
           <Link 
             href="/projects" 
             className="px-4 sm:px-6 py-2.5 sm:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base w-full sm:w-auto text-center"
@@ -79,7 +79,7 @@ export default function Home() {
       {/* change 0017 */}
       <section className="py-12 sm:py-16 md:py-20 bg-card border-t border-border">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-foreground">About Me</h2>
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-blue-900 mb-4 sm:mb-6">About Me</h1>
           <p className="text-base sm:text-lg text-foreground/70 leading-relaxed text-center max-w-2xl mx-auto">
             I'm a passionate developer with expertise in building modern web applications.
             With a strong foundation in both frontend and backend technologies, I create
@@ -87,7 +87,7 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <div className="h-px bg-border max-w-5xl mx-auto" />
+      <p className="text-sm sm:text-base md:text-lg text-gray-500 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed" />
       {/* Skills Section */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4">
