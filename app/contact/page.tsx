@@ -40,56 +40,81 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <header className="flex justify-end p-4">
-        <ThemeToggle />
-      </header>
-      
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <button
-          onClick={() => window.history.back()}
-          className="inline-flex items-center text-sm font-medium text-foreground hover:text-primary mb-8 bg-transparent border-none cursor-pointer p-0"
-        >
-          <svg
-            className="mr-2 h-4 w-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
-          Back
-        </Link>
-
-        <div className="bg-card rounded-lg shadow-md p-6 sm:p-8 border border-border">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Get in Touch</h1>
-          <p className="text-muted-foreground mb-8">
-            Feel free to reach out to me through any of these platforms:
-          </p>
-
-          <div className="space-y-4">
-            {socialLinks.map((social) => (
-              <a
-                key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-4 p-4 rounded-lg transition-colors border border-border hover:bg-accent hover:text-accent-foreground"
+      <header className="sticky top-0 z-10 bg-background/80 backdrop-blur-sm border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <button
+              onClick={() => window.history.back()}
+              className="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent transition-colors"
+            >
+              <svg
+                className="h-4 w-4 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <div className="p-2 rounded-full bg-muted text-muted-foreground">
-                  {social.icon}
-                </div>
-                <span className="font-medium text-foreground">{social.name}</span>
-              </a>
-            ))}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                />
+              </svg>
+              <span className="hidden sm:inline">Back to Previous</span>
+              <span className="sm:hidden">Back</span>
+            </button>
+            <ThemeToggle />
           </div>
         </div>
-      </div>
+      </header>
+      
+      <main className="flex-1">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="space-y-8">
+            <div className="text-center">
+              <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">Get in Touch</h1>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                Feel free to reach out to me through any of these platforms. I'll get back to you as soon as possible.
+              </p>
+            </div>
+
+            <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden">
+              <div className="p-1 bg-gradient-to-r from-blue-500/10 to-purple-500/10" />
+              <div className="p-6 sm:p-8">
+                <div className="grid gap-4 sm:gap-6">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`group flex items-center gap-4 p-4 rounded-lg transition-all duration-200 border border-border hover:border-blue-500/30 hover:shadow-md hover:shadow-blue-500/10 ${social.color}`}
+                    >
+                      <div className="flex-shrink-0 p-3 rounded-lg bg-muted text-muted-foreground group-hover:bg-blue-500/10 group-hover:text-blue-500 transition-colors">
+                        {social.icon}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-base sm:text-lg font-medium text-foreground group-hover:text-blue-500 transition-colors">
+                          {social.name}
+                        </h3>
+                        <p className="text-sm text-muted-foreground truncate">
+                          {social.url.replace(/^https?:\/\//, '').split('/')[0]}
+                        </p>
+                      </div>
+                      <div className="text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
