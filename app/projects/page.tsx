@@ -1,12 +1,8 @@
 'use client';
 
-// import Link from 'next/link';
-// import { ArrowRight, ExternalLink, Github, FolderGit2 } from 'lucide-react';
-// import { projects } from '@/app/data/projects';
-// import { ThemeToggle } from '@/components/theme-toggle';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowRight, ExternalLink, Github, FolderGit2, ArrowLeft } from 'lucide-react';
+import { ArrowRight, ExternalLink, Github, FolderGit2, ArrowLeft, Calendar } from 'lucide-react';
 import { projects } from '@/app/data/projects';
 import { ThemeToggle } from '@/components/theme-toggle';
 const container = {
@@ -30,32 +26,27 @@ const cardHover = {
   }
 };
 export default function Projects() {
+  const router = useRouter();
   return (
     <div className="min-h-screen bg-background">
       
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <header className="bg-card border-b border-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="flex items-center justify-between">
-              
-              {/* Left */}
-              <button
-                onClick={() => router.back()}
-                className="inline-flex items-center text-foreground hover:text-primary transition-colors group"
-              >
-                <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
-                <span className="font-medium">Back to Projects</span>
-              </button>
-
-              {/* Right */}
-              <div className="inline-flex text-white-500 items-center">
-                <ThemeToggle />
-              </div>
-
-            </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => router.back()}
+              className="inline-flex items-center text-foreground hover:text-primary transition-colors group"
+              aria-label="Go back"
+            >
+              <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
+              <span className="font-medium">Back</span>
+            </button>
+            <ThemeToggle />
           </div>
-        </header>
+        </div>
+      </header>
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -104,20 +95,21 @@ export default function Projects() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12"
         >
           {projects.map((project, index) => (
-            <motion.div
+            <motion.article
               key={project.id}
               variants={item}
               whileHover={{ y: -4, scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="group relative h-full flex flex-col"
+              className="relative h-full flex flex-col group cursor-pointer"
+              onClick={() => router.push(`/projects/${project.id}`)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e: React.KeyboardEvent) => e.key === 'Enter' && router.push(`/projects/${project.id}`)}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/15 dark:to-purple-500/15 rounded-xl blur-sm group-hover:blur-md transition-all duration-200 opacity-0 group-hover:opacity-100" />
               <div className="relative bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-200 flex-1 flex flex-col">
-                <div 
-                  className="h-36 bg-gradient-to-br from-blue-500/90 via-purple-600/90 to-indigo-700/90 flex items-center justify-center relative overflow-hidden cursor-pointer"
-                  onClick={() => window.location.href = `/projects/${project.id}`}
-                >
+                <div className="h-36 bg-gradient-to-br from-blue-500/90 via-purple-600/90 to-indigo-700/90 flex items-center justify-center relative overflow-hidden">
                   <div className="text-center p-4 text-white z-10 w-full">
                     <motion.div
                       initial={{ rotate: 0 }}
@@ -126,14 +118,8 @@ export default function Projects() {
                       className="inline-block"
                     >
                       <FolderGit2 className="w-10 h-10 mx-auto mb-2 drop-shadow-lg" />
-                    </motion.div>
-                    <h3 
-                      className="text-lg font-bold mb-1 hover:underline transition-all line-clamp-1"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        window.location.href = `/projects/${project.id}`;
-                      }}
-                    >
+                    </motion.article>
+                    <h3 className="text-lg font-bold mb-1 line-clamp-1">
                       {project.title}
                     </h3>
                     <div className="flex items-center justify-center gap-1 text-xs opacity-90">
@@ -149,7 +135,7 @@ export default function Projects() {
                     {project.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-1.5 mb-3 max-h-16 overflow-y-auto">
+                  <div className="flex flex-wrap gap-1.5 mb-3 max-h-20 overflow-hidden">
                     {project.technologies.slice(0, 3).map((tech: string, i: number) => (
                       <motion.span 
                         key={i}
@@ -180,6 +166,7 @@ export default function Projects() {
                             onClick={(e) => e.stopPropagation()}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
+                            aria-label={`View ${project.title} on GitHub`}
                             title="View on GitHub"
                           >
                             <Github className="w-4 h-4" />
@@ -194,6 +181,7 @@ export default function Projects() {
                             onClick={(e) => e.stopPropagation()}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
+                            aria-label={`View ${project.title} live demo`}
                             title="View Live Demo"
                           >
                             <ExternalLink className="w-4 h-4" />
@@ -203,10 +191,11 @@ export default function Projects() {
                       <motion.button 
                         onClick={(e) => {
                           e.stopPropagation();
-                          window.location.href = `/projects/${project.id}`;
+                          router.push(`/projects/${project.id}`);
                         }}
                         className="text-xs font-medium text-foreground hover:text-primary flex items-center gap-1 transition-colors"
                         whileHover={{ x: 2 }}
+                        aria-label={`View ${project.title} details`}
                       >
                         View Details <ArrowRight className="w-3 h-3" />
                       </motion.button>
@@ -214,7 +203,7 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div>
         
@@ -241,7 +230,7 @@ export default function Projects() {
               <div className="text-2xl mb-2">{stat.icon}</div>
               <div className="text-2xl font-bold text-foreground mb-1">{stat.value}</div>
               <div className="text-sm text-muted-foreground">{stat.label}</div>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div> */}
 
