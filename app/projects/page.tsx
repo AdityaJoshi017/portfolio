@@ -50,7 +50,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-5xl-blue-500 md:text-7xl font-bold bg-gradient-to-r from-gray-900 via-blue-600 to-purple-800 dark:from-white dark:via-blue-400 dark:to-purple-200 bg-clip-text text-transparent mb-6 leading-tight"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold bg-gradient-to-r from-gray-900 via-blue-600 to-purple-800 dark:from-white dark:via-blue-400 dark:to-purple-200 bg-clip-text text-transparent mb-4 sm:mb-6 leading-tight"
           >
             My Projects
           </motion.h1>
@@ -59,7 +59,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-8"
+            className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-6 sm:mb-8 px-4 sm:px-0"
           >
             Explore my portfolio of innovative projects built with modern technologies. 
             Each project represents a unique challenge and learning experience.
@@ -69,7 +69,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground"
+            className="flex flex-wrap justify-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground px-4 sm:px-0"
           >
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
@@ -90,20 +90,21 @@ export default function Projects() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16 px-4 sm:px-0"
         >
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
               variants={item}
               whileHover={{ y: -8, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="group relative"
+              className="group relative sm:hover:transform sm:hover:scale-105"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 dark:from-blue-500/30 dark:to-purple-500/30 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
               <div className="relative bg-card rounded-2xl shadow-lg border border-border overflow-hidden hover:shadow-xl transition-all duration-300">
                 <div 
-                  className="h-56 bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 flex items-center justify-center relative overflow-hidden cursor-pointer"
+                  className="h-48 sm:h-56 bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 flex items-center justify-center relative overflow-hidden cursor-pointer"
                   onClick={() => window.location.href = `/projects/${project.id}`}
                 >
                   <div className="text-center p-6 text-white z-10">
@@ -116,7 +117,7 @@ export default function Projects() {
                       <FolderGit2 className="w-14 h-14 mx-auto mb-4 drop-shadow-lg" />
                     </motion.div>
                     <h3 
-                      className="text-2xl font-bold mb-2 hover:underline transition-all"
+                      className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 hover:underline transition-all"
                       onClick={(e) => {
                         e.stopPropagation();
                         window.location.href = `/projects/${project.id}`;
@@ -137,14 +138,14 @@ export default function Projects() {
                     {project.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6 max-h-20 overflow-y-auto">
                     {project.technologies.slice(0, 4).map((tech: string, i: number) => (
                       <motion.span 
                         key={i}
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.1 + i * 0.05 }}
-                        className="px-3 py-1.5 bg-muted text-muted-foreground rounded-full text-xs font-medium border border-border"
+                        className="px-2 sm:px-3 py-1 sm:py-1.5 bg-muted text-muted-foreground rounded-full text-[10px] sm:text-xs font-medium border border-border"
                       >
                         {tech}
                       </motion.span>
@@ -156,14 +157,14 @@ export default function Projects() {
                     )}
                   </div>
                   
-                  <div className="flex items-center justify-between pt-4 border-t border-border">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-3 sm:pt-4 border-t border-border gap-3 sm:gap-0">
                     <div className="flex space-x-2">
                       {project.githubUrl && (
                         <motion.a 
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-2.5 bg-muted text-muted-foreground hover:bg-accent rounded-lg transition-all duration-200 hover:scale-110"
+                          className="p-2 sm:p-2.5 bg-muted text-muted-foreground hover:bg-accent rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
                           onClick={(e) => e.stopPropagation()}
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.95 }}
@@ -176,7 +177,7 @@ export default function Projects() {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-2.5 bg-muted text-muted-foreground hover:bg-accent rounded-lg transition-all duration-200 hover:scale-110"
+                          className="p-2 sm:p-2.5 bg-muted text-muted-foreground hover:bg-accent rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
                           onClick={(e) => e.stopPropagation()}
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.95 }}
@@ -190,7 +191,7 @@ export default function Projects() {
                         e.stopPropagation();
                         window.location.href = `/projects/${project.id}`;
                       }}
-                      className="text-sm bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 hover:shadow-lg hover:scale-105"
+                      className="text-xs sm:text-sm bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-200 flex items-center justify-center gap-1.5 sm:gap-2 hover:shadow-lg hover:scale-105 active:scale-95 w-full sm:w-auto"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >

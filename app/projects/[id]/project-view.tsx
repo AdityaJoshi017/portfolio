@@ -13,7 +13,7 @@ export function ProjectView({ project }: ProjectViewProps) {
   const router = useRouter();
   type DeviceType = 'normal' | 'mobile' | 'desktop' | 'responsive';
 
-  const [deviceType, setDeviceType] = useState<DeviceType>('normal');
+  const [deviceType, setDeviceType] = useState<DeviceType>('responsive');
   const [iframeSrcIndex, setIframeSrcIndex] = useState(0);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [iframeError, setIframeError] = useState(false);
@@ -21,10 +21,10 @@ export function ProjectView({ project }: ProjectViewProps) {
   const [isMaximized, setIsMaximized] = useState(false);
   const [previewScale, setPreviewScale] = useState(0.75);
   const [previewSize, setPreviewSize] = useState({
-    width: 414,
-    height: 896
+    width: 375,
+    height: 812
   });
-  const [showResponsiveControls, setShowResponsiveControls] = useState(false);
+  const [showResponsiveControls, setShowResponsiveControls] = useState(true);
 
   const SOURCES = [
     "https://efootball-stats-six.vercel.app/",

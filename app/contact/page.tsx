@@ -45,9 +45,9 @@ export default function ContactPage() {
       </header>
       
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Link
-          href="/"
-          className="inline-flex items-center text-sm font-medium text-foreground hover:text-primary mb-8"
+        <button
+          onClick={() => window.history.back()}
+          className="inline-flex items-center text-sm font-medium text-foreground hover:text-primary mb-8 bg-transparent border-none cursor-pointer p-0"
         >
           <svg
             className="mr-2 h-4 w-4"
@@ -63,7 +63,7 @@ export default function ContactPage() {
               d="M10 19l-7-7m0 0l7-7m-7 7h18"
             />
           </svg>
-          Back to home
+          Back
         </Link>
 
         <div className="bg-card rounded-lg shadow-md p-6 sm:p-8 border border-border">
