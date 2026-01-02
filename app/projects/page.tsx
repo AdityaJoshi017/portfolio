@@ -41,9 +41,18 @@ export default function Projects() {
                 onClick={() => router.back()}
                 className="inline-flex items-center text-foreground hover:text-primary transition-colors group"
               >
+                <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
+                <span className="font-medium">Back to Projects</span>
+              </button>
+
+              {/* Right */}
+              <div className="inline-flex text-white-500 items-center">
+                <ThemeToggle />
+              </div>
+
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <motion.div 
