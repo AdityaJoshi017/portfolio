@@ -32,7 +32,10 @@ const cardHover = {
 export default function Projects() {
   return (
     <div className="min-h-screen bg-background">
-      <header className="bg-card border-b border-border">
+      
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <header className="bg-card border-b border-border">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               
@@ -53,8 +56,6 @@ export default function Projects() {
             </div>
           </div>
         </header>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
