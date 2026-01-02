@@ -37,7 +37,7 @@ export function ThemeToggle() {
       <DropdownMenu.Root onOpenChange={setIsOpen}>
         <DropdownMenu.Trigger asChild>
           <button
-            className="flex items-center gap-2 p-2 text-primary rounded-lg hover:bg-blue-600 dark:hover:bg-gray-800 transition-colors"
+            className="flex items-center gap-2 p-2 text-primary rounded-lg hover:bg-blue-600 dark:hover:bg-blue-800 transition-colors"
             aria-label="Theme selector"
           >
             <CurrentIcon className="w-5 h-5" />
