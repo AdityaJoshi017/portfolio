@@ -4,9 +4,9 @@
 // import { ArrowRight, ExternalLink, Github, FolderGit2 } from 'lucide-react';
 // import { projects } from '@/app/data/projects';
 // import { ThemeToggle } from '@/components/theme-toggle';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowRight, ExternalLink, Github, FolderGit2, Sparkles, Calendar, Users, Clock, Star } from 'lucide-react';
+import { ArrowRight, ExternalLink, Github, FolderGit2, ArrowLeft } from 'lucide-react';
 import { projects } from '@/app/data/projects';
 import { ThemeToggle } from '@/components/theme-toggle';
 const container = {
@@ -32,56 +32,57 @@ const cardHover = {
 export default function Projects() {
   return (
     <div className="min-h-screen bg-background">
-      <header className="flex justify-end p-4">
-        
-        <ThemeToggle />
+      <header className="bg-card border-b border-border">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex items-center justify-between">
+              
+              {/* Left */}
+              <button
+                onClick={() => router.back()}
+                className="inline-flex items-center text-foreground hover:text-primary transition-colors group"
+              >
+          </div>
+        </div>
       </header>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <motion.div 
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.4 }}
+          className="text-center mb-8 sm:mb-10"
         >
-          
-          
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-4xl sm:text-5xl md:text-7xl font-bold bg-gradient-to-r from-gray-900 via-blue-600 to-purple-800 dark:from-white dark:via-blue-400 dark:to-purple-200 bg-clip-text text-transparent mb-4 sm:mb-6 leading-tight"
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-600 to-purple-800 dark:from-white dark:via-blue-400 dark:to-purple-200 bg-clip-text text-transparent mb-3 sm:mb-4 leading-tight"
           >
             My Projects
           </motion.h1>
           
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-6 sm:mb-8 px-4 sm:px-0"
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-4 sm:mb-6 px-2"
           >
-            Explore my portfolio of innovative projects built with modern technologies. 
-            Each project represents a unique challenge and learning experience.
+            Explore my portfolio of innovative projects built with modern technologies.
           </motion.p>
           
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap justify-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground px-4 sm:px-0"
+            transition={{ duration: 0.4, delay: 0.3 }}
+            className="flex flex-wrap justify-center gap-2 sm:gap-3 text-xs text-muted-foreground"
           >
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
+            <div className="flex items-center gap-1.5">
+              <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse" />
               <span>{projects.length} Projects</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
+            <div className="flex items-center gap-1.5">
+              <div className="w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse" />
               <span>Multiple Technologies</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span>Live Demos</span>
             </div>
           </motion.div>
         </motion.div>
@@ -90,34 +91,34 @@ export default function Projects() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16 px-4 sm:px-0"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12"
         >
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
               variants={item}
-              whileHover={{ y: -8, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="group relative sm:hover:transform sm:hover:scale-105"
+              whileHover={{ y: -4, scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="group relative h-full flex flex-col"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 dark:from-blue-500/30 dark:to-purple-500/30 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
-              <div className="relative bg-card rounded-2xl shadow-lg border border-border overflow-hidden hover:shadow-xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/15 dark:to-purple-500/15 rounded-xl blur-sm group-hover:blur-md transition-all duration-200 opacity-0 group-hover:opacity-100" />
+              <div className="relative bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-200 flex-1 flex flex-col">
                 <div 
-                  className="h-48 sm:h-56 bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700 flex items-center justify-center relative overflow-hidden cursor-pointer"
+                  className="h-36 bg-gradient-to-br from-blue-500/90 via-purple-600/90 to-indigo-700/90 flex items-center justify-center relative overflow-hidden cursor-pointer"
                   onClick={() => window.location.href = `/projects/${project.id}`}
                 >
-                  <div className="text-center p-6 text-white z-10">
+                  <div className="text-center p-4 text-white z-10 w-full">
                     <motion.div
                       initial={{ rotate: 0 }}
                       animate={{ rotate: 360 }}
                       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                       className="inline-block"
                     >
-                      <FolderGit2 className="w-14 h-14 mx-auto mb-4 drop-shadow-lg" />
+                      <FolderGit2 className="w-10 h-10 mx-auto mb-2 drop-shadow-lg" />
                     </motion.div>
                     <h3 
-                      className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 hover:underline transition-all"
+                      className="text-lg font-bold mb-1 hover:underline transition-all line-clamp-1"
                       onClick={(e) => {
                         e.stopPropagation();
                         window.location.href = `/projects/${project.id}`;
@@ -125,78 +126,81 @@ export default function Projects() {
                     >
                       {project.title}
                     </h3>
-                    <div className="flex items-center justify-center gap-2 text-sm opacity-90">
+                    <div className="flex items-center justify-center gap-1 text-xs opacity-90">
                       <Calendar className="w-3 h-3" />
                       <span>{new Date(project.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
                     </div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 </div>
                 
-                <div className="p-6">
-                  <p className="text-muted-foreground mb-6 line-clamp-3 leading-relaxed">
+                <div className="p-4 flex-1 flex flex-col">
+                  <p className="text-muted-foreground text-sm mb-3 line-clamp-2 leading-relaxed">
                     {project.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6 max-h-20 overflow-y-auto">
-                    {project.technologies.slice(0, 4).map((tech: string, i: number) => (
+                  <div className="flex flex-wrap gap-1.5 mb-3 max-h-16 overflow-y-auto">
+                    {project.technologies.slice(0, 3).map((tech: string, i: number) => (
                       <motion.span 
                         key={i}
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.1 + i * 0.05 }}
-                        className="px-2 sm:px-3 py-1 sm:py-1.5 bg-muted text-muted-foreground rounded-full text-[10px] sm:text-xs font-medium border border-border"
+                        className="px-2 py-1 bg-muted text-muted-foreground rounded-full text-[10px] font-medium border border-border whitespace-nowrap"
                       >
                         {tech}
                       </motion.span>
                     ))}
-                    {project.technologies.length > 4 && (
-                      <span className="px-3 py-1.5 bg-muted text-muted-foreground rounded-full text-xs font-medium border border-border">
-                        +{project.technologies.length - 4} more
+                    {project.technologies.length > 3 && (
+                      <span className="px-2 py-1 bg-muted text-muted-foreground rounded-full text-[10px] font-medium border border-border">
+                        +{project.technologies.length - 3} more
                       </span>
                     )}
                   </div>
                   
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-3 sm:pt-4 border-t border-border gap-3 sm:gap-0">
-                    <div className="flex space-x-2">
-                      {project.githubUrl && (
-                        <motion.a 
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2 sm:p-2.5 bg-muted text-muted-foreground hover:bg-accent rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
-                          onClick={(e) => e.stopPropagation()}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <Github className="w-4 h-4" />
-                        </motion.a>
-                      )}
-                      {project.liveUrl && (
-                        <motion.a 
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2 sm:p-2.5 bg-muted text-muted-foreground hover:bg-accent rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
-                          onClick={(e) => e.stopPropagation()}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </motion.a>
-                      )}
+                  <div className="mt-auto pt-3 border-t border-border">
+                    <div className="flex items-center justify-between">
+                      <div className="flex gap-1.5">
+                        {project.githubUrl && (
+                          <motion.a 
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-1.5 text-muted-foreground hover:text-foreground rounded-md transition-colors"
+                            onClick={(e) => e.stopPropagation()}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            title="View on GitHub"
+                          >
+                            <Github className="w-4 h-4" />
+                          </motion.a>
+                        )}
+                        {project.liveUrl && (
+                          <motion.a 
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-1.5 text-muted-foreground hover:text-foreground rounded-md transition-colors"
+                            onClick={(e) => e.stopPropagation()}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            title="View Live Demo"
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                          </motion.a>
+                        )}
+                      </div>
+                      <motion.button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.location.href = `/projects/${project.id}`;
+                        }}
+                        className="text-xs font-medium text-foreground hover:text-primary flex items-center gap-1 transition-colors"
+                        whileHover={{ x: 2 }}
+                      >
+                        View Details <ArrowRight className="w-3 h-3" />
+                      </motion.button>
                     </div>
-                    <motion.button 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        window.location.href = `/projects/${project.id}`;
-                      }}
-                      className="text-xs sm:text-sm bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-200 flex items-center justify-center gap-1.5 sm:gap-2 hover:shadow-lg hover:scale-105 active:scale-95 w-full sm:w-auto"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      View Details <ArrowRight className="w-4 h-4" />
-                    </motion.button>
                   </div>
                 </div>
               </div>
