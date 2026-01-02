@@ -33,6 +33,7 @@ export default function Projects() {
   return (
     <div className="min-h-screen bg-background">
       <header className="flex justify-end p-4">
+        
         <ThemeToggle />
       </header>
       
