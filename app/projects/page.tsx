@@ -30,36 +30,23 @@ export default function Projects() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <header className="bg-card border-b border-border sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
           <div className="flex items-center justify-between">
             <button
               onClick={() => router.back()}
-              className="inline-flex items-center text-foreground hover:text-primary transition-colors group"
+              className="inline-flex items-center text-foreground hover:text-primary transition-colors group text-sm sm:text-base"
               aria-label="Go back"
             >
-              <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 transition-transform group-hover:-translate-x-1" />
               <span className="font-medium">Back</span>
             </button>
-            <ThemeToggle />
+            <ThemeToggle className="scale-90 sm:scale-100" />
           </div>
         </div>
       </header>
       
       <main className="flex-1 flex flex-col">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-          <motion.div 
-            initial={{ opacity: 0, y: -10 }}
-              onClick={() => router.back()}
-              className="inline-flex items-center text-foreground hover:text-primary transition-colors group"
-              aria-label="Go back"
-            >
-              <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
-              <span className="font-medium">Back</span>
-            </button>
-            <ThemeToggle />
-          </div>
-        </div>
-      </header>
+        <div className="max-w-7xl mx-auto w-full px-3 sm:px-6 py-4 sm:py-6">
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,7 +57,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-600 to-purple-800 dark:from-white dark:via-blue-400 dark:to-purple-200 bg-clip-text text-transparent mb-3 sm:mb-4 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-600 to-purple-800 dark:from-white dark:via-blue-400 dark:to-purple-200 bg-clip-text text-transparent mb-2 sm:mb-3 md:mb-4 leading-tight"
           >
             My Projects
           </motion.h1>
@@ -79,7 +66,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-4 sm:mb-6 px-2"
+            className="text-xs sm:text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-3 sm:mb-5 px-1"
           >
             Explore my portfolio of innovative projects built with modern technologies.
           </motion.p>
@@ -143,8 +130,8 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 </div>
                 
-                <div className="p-4 flex-1 flex flex-col">
-                  <p className="text-muted-foreground text-sm mb-3 line-clamp-2 leading-relaxed">
+                <div className="p-3 sm:p-4 flex-1 flex flex-col">
+                  <p className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2 leading-relaxed">
                     {project.description}
                   </p>
                   

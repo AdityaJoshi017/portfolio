@@ -22,7 +22,7 @@ export function ProjectView({ project }: ProjectViewProps) {
   const [previewScale, setPreviewScale] = useState(0.75);
   const [previewSize, setPreviewSize] = useState({
     width: 375,
-    height: 812
+    height: 667
   });
   const [showResponsiveControls, setShowResponsiveControls] = useState(true);
 
@@ -62,7 +62,7 @@ export function ProjectView({ project }: ProjectViewProps) {
 
   // Device presets
   const devicePresets = {
-    mobile: { width: 375, height: 812, label: 'iPhone 12' },
+    mobile: { width: 375, height: 667, label: 'iPhone 8' },
     tablet: { width: 768, height: 1024, label: 'iPad' },
     desktop: { width: 1440, height: 900, label: 'Desktop' },
   };
@@ -74,31 +74,34 @@ export function ProjectView({ project }: ProjectViewProps) {
   };
 
   return (
-    <main className="min-h-screen bg-background">
-      {/* Header */}
-      {/* <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <button
-            onClick={() => router.back()}
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors group"
-          >
-            <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
-            <span className="font-medium">Back to Projects</span>
-          </button>
-              </div>
-            </div>
+    <div className="min-h-screen bg-background flex flex-col">
+      <header className="bg-card border-b border-border sticky top-0 z-10">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => router.back()}
+              className="inline-flex items-center text-foreground hover:text-primary transition-colors group text-sm sm:text-base"
+              aria-label="Go back"
+            >
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 transition-transform group-hover:-translate-x-1" />
+              <span className="font-medium">Back to Projects</span>
+            </button>
+            <ThemeToggle className="scale-90 sm:scale-100" />
           </div>
-        </header>
+        </div>
+      </header>
+      
+      <main className="flex-1">
         {/* Project Preview */}
-        <div className="mt-10">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg sm:text-xl font-bold text-foreground">{project.title}</h2>
+        <div className="mt-4 sm:mt-8 px-3 sm:px-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground">{project.title}</h2>
             <div className="flex items-center gap-2">
-              <div className="flex items-center bg-gray-100 rounded-md p-1">
+              <div className="flex flex-wrap items-center gap-2 bg-card p-2 rounded-lg border border-border">
                 <button
                   onClick={() => {
                     setDeviceType('normal');
-                    setShowResponsiveControls(false);
+                    setPreviewSize({ width: '100%', height: '100%' });
                   }}
                   className={`p-2 rounded ${deviceType === 'normal' ? 'bg-white shadow' : ''}`}
                   title="Normal view"
@@ -114,7 +117,7 @@ export function ProjectView({ project }: ProjectViewProps) {
                 </button>
                 <div className="relative">
                   <button
-                   onClick={() => {
+                    onClick={() => {
                       if (deviceType !== 'responsive') {
                         // Enter responsive mode + open dropdown
                         setDeviceType('responsive');
@@ -123,113 +126,87 @@ export function ProjectView({ project }: ProjectViewProps) {
                         // Already in responsive → just toggle dropdown
                         setShowResponsiveControls(prev => !prev);
                       }
-                      setShowResponsiveControls(false);
                     }}
-                    className={`p-2 rounded ${deviceType === 'normal' ? 'bg-white shadow' : ''}`}
-                    title="Normal view"
+                    className={`p-2 rounded flex items-center gap-1 ${deviceType === 'responsive' ? 'bg-white shadow' : ''}`}
+                    title="Responsive view"
                   >
-                    <span className={`text-xs font-medium ${deviceType === 'normal' ? 'text-blue-600' : 'text-gray-500'}`}>Normal</span>
-                  </button>
-                  <button
-                    onClick={() => setDeviceType('desktop')}
-                    className={`p-2 rounded ${deviceType === 'desktop' ? 'bg-white shadow' : ''}`}
-                    title="Desktop view"
-                  >
-                    <Monitor className={`w-4 h-4 ${deviceType === 'desktop' ? 'text-blue-600' : 'text-gray-500'}`} />
-                  </button>
-                  <div className="relative">
-                    <button
-                     onClick={() => {
-                        if (deviceType !== 'responsive') {
-                          // Enter responsive mode + open dropdown
-                          setDeviceType('responsive');
-                          setShowResponsiveControls(true);
-                        } else {
-                          // Already in responsive → just toggle dropdown
-                          setShowResponsiveControls(prev => !prev);
-                        }
-                      }}
-                      className={`p-2 rounded flex items-center gap-1 ${deviceType === 'responsive' ? 'bg-white shadow' : ''}`}
-                      title="Responsive view"
+                    <span className={`text-xs font-medium ${deviceType === 'responsive' ? 'text-blue-600' : 'text-gray-500'}`}>
+                      Responsive
+                    </span>
+                    <svg 
+                      className={`w-3 h-3 text-black transition-transform ${showResponsiveControls ? 'rotate-180' : ''}`} 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
                     >
-                      <span className={`text-xs font-medium ${deviceType === 'responsive' ? 'text-blue-600' : 'text-gray-500'}`}>
-                        Responsive
-                      </span>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  
+                  <div className={`absolute right-0 mt-2 w-64 bg-white rounded-md shadow-lg z-10 overflow-hidden transition-all duration-200 ${showResponsiveControls ? 'max-h-96 p-4' : 'max-h-0 p-0'}`}>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setShowResponsiveControls(!showResponsiveControls);
+                        setDeviceType('responsive');
+                      }}
+                      className="absolute -top-8 right-0 p-1 text-gray-500 hover:text-gray-700"
+                      title={showResponsiveControls ? 'Hide controls' : 'Show controls'}
+                    >
                       <svg 
-                        className={`w-3 h-3 text-black transition-transform ${showResponsiveControls ? 'rotate-180' : ''}`} 
+                        className={`w-4 h-4 transition-transform ${showResponsiveControls ? 'rotate-180' : ''}`}
                         fill="none" 
-                        viewBox="0 0 24 24" 
+                        viewBox="0 0 24 24"
                         stroke="currentColor"
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
-                    
-                    <div className={`absolute right-0 mt-2 w-64 bg-white rounded-md shadow-lg z-10 overflow-hidden transition-all duration-200 ${showResponsiveControls ? 'max-h-96 p-4' : 'max-h-0 p-0'}`}>
-                      <button 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setShowResponsiveControls(!showResponsiveControls);
-                          setDeviceType('responsive');
-                        }}
-                        className="absolute -top-8 right-0 p-1 text-gray-500 hover:text-gray-700"
-                        title={showResponsiveControls ? 'Hide controls' : 'Show controls'}
-                      >
-                        <svg 
-                          className={`w-4 h-4 transition-transform ${showResponsiveControls ? 'rotate-180' : ''}`}
-                          fill="none" 
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-                      <div className="grid grid-cols-2 gap-3 p-4">
-                        <div>
-                          <label className="block text-xs font-medium text-gray-500 mb-1">
-                            Width (px)
-                          </label>
-                          <input
-                            type="number"
-                            min="100"
-                            max="3000"
-                            value={previewSize.width}
-                            onChange={(e) => setPreviewSize({...previewSize, width: parseInt(e.target.value) || 0})}
-                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded bg-white text-gray-900"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs font-medium text-gray-500 mb-1">
-                            Height (px)
-                          </label>
-                          <input
-                            type="number"
-                            min="100"
-                            max="3000"
-                            value={previewSize.height}
-                            onChange={(e) => setPreviewSize({...previewSize, height: parseInt(e.target.value) || 0})}
-                            className="w-full px-2 py-1 text-sm border border-gray-300 rounded bg-white text-gray-900"
-                          />
-                        </div>
-                        <div className="col-span-2">
-                          <label className="block text-xs font-medium text-gray-500 mb-1">
-                            Scale
-                          </label>
-                          <div className="flex items-center space-x-2">
-                            {[0.5, 0.75, 1].map((scale) => (
-                              <button
-                                key={scale}
-                                onClick={() => setPreviewScale(scale)}
-                                className={`px-2 py-1 text-xs rounded ${
-                                  previewScale === scale
-                                    ? 'bg-blue-100 text-blue-700'
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                }`}
-                              >
-                                {scale * 100}%
-                              </button>
-                            ))}
-                          </div>
+                    <div className="grid grid-cols-2 gap-3 p-4">
+                      <div>
+                        <label className="block text-xs font-medium text-gray-500 mb-1">
+                          Width (px)
+                        </label>
+                        <input
+                          type="number"
+                          min="100"
+                          max="3000"
+                          value={previewSize.width}
+                          onChange={(e) => setPreviewSize({...previewSize, width: parseInt(e.target.value) || 0})}
+                          className="w-full px-2 py-1 text-sm border border-gray-300 rounded bg-white text-gray-900"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-medium text-gray-500 mb-1">
+                          Height (px)
+                        </label>
+                        <input
+                          type="number"
+                          min="100"
+                          max="3000"
+                          value={previewSize.height}
+                          onChange={(e) => setPreviewSize({...previewSize, height: parseInt(e.target.value) || 0})}
+                          className="w-full px-2 py-1 text-sm border border-gray-300 rounded bg-white text-gray-900"
+                        />
+                      </div>
+                      <div className="col-span-2">
+                        <label className="block text-xs font-medium text-gray-500 mb-1">
+                          Scale
+                        </label>
+                        <div className="flex items-center space-x-2">
+                          {[0.5, 0.75, 1].map((scale) => (
+                            <button
+                              key={scale}
+                              onClick={() => setPreviewScale(scale)}
+                              className={`px-2 py-1 text-xs rounded ${
+                                previewScale === scale
+                                  ? 'bg-blue-100 text-blue-700'
+                                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                              }`}
+                            >
+                              {scale * 100}%
+                            </button>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -265,7 +242,7 @@ export function ProjectView({ project }: ProjectViewProps) {
             >
               {deviceType === 'responsive' && (
                 <div className="absolute -top-6 left-0 right-0 text-center">
-                  <div className="inline-block px-2 py-1 text-xs btext-foreground/70xt-gray-600 rounded-b-md">
+                  <div className="inline-block px-2 py-1 text-xs text-foreground/70 text-gray-600 rounded-b-md">
                     {previewSize.width} × {previewSize.height} @ {Math.round(previewScale * 100)}%
                   </div>
                 </div>
@@ -433,42 +410,9 @@ export function ProjectView({ project }: ProjectViewProps) {
             )}
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row justify-between gap-4">
-          <button  
-          style={{ cursor: "pointer" }}
-            
-            onClick={() => router.back()}
-            className="px-4 py-2 border border-gray-300 text-white-700 rounded-md hover:bg-yellow-600 transition-colors flex items-center justify-center"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Projects
-          </button>
-          <div className="flex gap-3">
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 border border-blue-300 text-blue-600 rounded-md 
-              hover:bg-yellow-600 hover:text-white 
-              transition-colors flex items-center justify-center"
-              >
-              <Github className="w-4 h-4 mr-2" />
-              View Code
-            </a>
-            <a
-              href="https://efootball-stats-six.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors flex items-center justify-center"
-            >
-              <ExternalLink className="w-4 h-4 mr-2" />
-              Open Full Project
-            </a>
-          </div>
-        </div>
 
       </div>
-      
-    </main>
+          </main>
+    </div>
   );
 }
