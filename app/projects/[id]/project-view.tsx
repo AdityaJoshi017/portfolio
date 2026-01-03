@@ -86,7 +86,9 @@ export function ProjectView({ project }: ProjectViewProps) {
               <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 transition-transform group-hover:-translate-x-1" />
               <span className="font-medium">Back to Projects</span>
             </button>
-            <ThemeToggle className="scale-90 sm:scale-100" />
+<div className="scale-90 sm:scale-100">
+  <ThemeToggle />
+</div>
           </div>
         </div>
       </header>
