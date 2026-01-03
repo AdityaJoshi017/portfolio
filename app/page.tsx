@@ -11,22 +11,22 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
       <header className="bg-card border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4">
-          <div className="flex justify-end space-x-2">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4">
+          <div className="flex justify-end space-x-2 sm:space-x-3">
             <button 
               onClick={() => router.back()} 
-              className="inline-flex items-center text-foreground hover:text-primary transition-colors group text-sm sm:text-base"
+              className="inline-flex items-center text-foreground hover:text-primary transition-colors group text-sm sm:text-base min-h-[32px] sm:min-h-[40px] px-2 sm:px-3"
             >
-              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 transition-transform group-hover:-translate-x-1" />
-              <span className="font-medium">Back</span>
+              <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1 sm:mr-1.5 md:mr-2 transition-transform group-hover:-translate-x-0.5" />
+              <span className="font-medium text-sm sm:text-base">Back</span>
             </button>
-            <ThemeToggle className="scale-90 sm:scale-100" />
+            <ThemeToggle className="scale-75 sm:scale-90 md:scale-100" />
           </div>
         </div>
       </header>
       {/* Hero Section */}
-      <section className="py-4 sm:py-8 md:py-16 text-center px-4 sm:px-6 max-w-full overflow-hidden">
-        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-blue-900 mb-3 sm:mb-4 md:mb-6 leading-tight px-2">
+      <section className="py-6 sm:py-8 md:py-16 text-center px-3 sm:px-4 md:px-6 max-w-full overflow-hidden">
+        <h1 className="text-2xl xs:text-2.5xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-blue-900 mb-3 sm:mb-4 md:mb-6 leading-tight px-1 sm:px-2">
           Hi, I'm{' '}
           <span className="text-blue-600 relative block sm:inline">
             <TypingEffect 
@@ -77,10 +77,10 @@ export default function Home() {
       {/* About Section */}
       {/* <section className="py-16 bg-gray-50"> */} 
       {/* change 0017 */}
-      <section className="py-8 sm:py-12 md:py-16 bg-card border-t border-border">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-blue-900 mb-4 sm:mb-5 text-center px-2">About Me</h1>
-          <p className="text-sm sm:text-base text-foreground/70 leading-relaxed text-center max-w-2xl mx-auto px-2">
+      <section className="py-10 sm:py-12 md:py-16 bg-card border-t border-border">
+        <div className="max-w-4xl mx-auto px-4 sm:px-5 md:px-6">
+          <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-3 sm:mb-4 md:mb-5 text-center px-2">About Me</h1>
+          <p className="text-xs xs:text-sm sm:text-base text-foreground/70 leading-relaxed text-center max-w-2xl mx-auto px-2 sm:px-3">
             I'm a passionate developer with expertise in building modern web applications.
             With a strong foundation in both frontend and backend technologies, I create
             efficient, scalable, and user-friendly solutions.
@@ -90,12 +90,12 @@ export default function Home() {
       <p className="text-sm sm:text-base md:text-lg text-gray-500 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed" />
       {/* Skills Section */}
       <section className="py-8 sm:py-12 md:py-16 overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 sm:mb-10 px-2">My Skills</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5 px-2">
+        <div className="max-w-4xl mx-auto px-3 sm:px-4 md:px-6">
+          <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-center mb-5 sm:mb-8 md:mb-10 px-2">My Skills</h2>
+          <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 gap-2.5 sm:gap-3 md:gap-4 px-1 sm:px-2">
             {['Java', 'Python', 'ML/AI', 'Frontend', 'DBMS', 'DSA', 'Next.js', 'React'].map((skill) => (
-              <div key={skill} className="p-2 sm:p-3 bg-card text-card-foreground rounded-lg border border-border text-center flex items-center justify-center min-h-[60px] sm:min-h-[70px]">
-                <span className="text-xs sm:text-sm md:text-base font-medium">{skill}</span>
+              <div key={skill} className="p-2 sm:p-2.5 md:p-3 bg-card text-card-foreground rounded-lg border border-border text-center flex items-center justify-center min-h-[50px] xs:min-h-[55px] sm:min-h-[60px] md:min-h-[70px]">
+                <span className="text-xs xs:text-xs sm:text-sm md:text-base font-medium">{skill}</span>
               </div>
             ))}
           </div>
