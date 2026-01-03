@@ -76,7 +76,7 @@ export default function Home() {
     "
     typingSpeed={90}
     deletingSpeed={65}
-    pauseTime={2000}
+    pauseDelay={2000}
   />
 </div>
 
