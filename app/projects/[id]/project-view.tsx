@@ -411,8 +411,8 @@ export function ProjectView({ project }: ProjectViewProps) {
           </div>
         </div>
 
-      </div>
-          </main>
+      {/* </div> */}
+   </main>
     </div>
   );
 }
