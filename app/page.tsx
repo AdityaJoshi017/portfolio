@@ -51,33 +51,32 @@ export default function Home() {
           Crafting digital experiences with code and creativity
         </p>
 
-        {/* Typing subtitle - Mobile safe */}
-        <div className="min-h-[48px] mb-6 w-full overflow-hidden">
-          <TypingEffect
-            texts={[
-              'AI/ML Developer',
-              'Java & Python',
-              'Full Stack Dev',
-              'Web & Mobile',
-              'Ideas into Reality',
-            ]}
-            className="w-full"
-            textClassName="
-              text-sm
-              text-gray-600 dark:text-gray-300
-              text-center
-              break-words
-              hyphens-auto
-              leading-relaxed
-              px-2
-              mx-auto
-              max-w-[95%]
-            "
-            typingSpeed={70}
-            deletingSpeed={50}
-            pauseTime={2000}
-          />
-        </div>
+        {/* Typing subtitle – HARD mobile-safe */}
+<div className="min-h-[48px] mb-6 w-full max-w-full overflow-hidden flex justify-center">
+  <TypingEffect
+    texts={[
+      'AI/ML Developer',
+      'Java & Python',
+      'Full Stack Dev',
+      'Web & Mobile',
+      'Ideas into Reality',
+    ]}
+    className="w-full max-w-full flex justify-center overflow-hidden"
+    textClassName="
+      text-sm
+      text-gray-600 dark:text-gray-300
+      text-center
+      break-words
+      whitespace-normal
+      leading-relaxed
+      px-2
+      max-w-full
+    "
+    typingSpeed={70}
+    deletingSpeed={50}
+    pauseTime={2000}
+  />
+</div>
 
         {/* Buttons - Mobile optimized */}
         <div className="flex flex-col gap-3 w-full max-w-[280px] mx-auto px-2">
