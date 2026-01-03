@@ -176,7 +176,7 @@ const handleIframeError = () => {
                 </a>
               )}
               <a
-                href={project.demoUrl || "#"}
+                href="https://efootball-stats-six.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-5 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-colors shadow-sm"
@@ -549,7 +549,7 @@ const handleIframeError = () => {
               View Code
             </a>
             <a
-              href="http://localhost:3001"
+              href="https://efootball-stats-six.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors flex items-center justify-center"
