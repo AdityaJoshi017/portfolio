@@ -52,7 +52,7 @@ export default function Home() {
         </p>
 
         {/* Typing subtitle – HARD mobile-safe */}
-<div className="min-h-[48px] mb-6 w-full max-w-full overflow-hidden flex justify-center">
+{/* <div className="min-h-[48px] mb-6 w-full max-w-full overflow-hidden flex justify-center">
   <TypingEffect
     texts={[
       'AI/ML Developer',
@@ -72,11 +72,11 @@ export default function Home() {
       px-2
       max-w-full
     "
-    typingSpeed={70}
-    deletingSpeed={50}
+    typingSpeed={90}
+    deletingSpeed={65}
     pauseTime={2000}
   />
-</div>
+</div> */}
 
         {/* Buttons - Mobile optimized */}
         <div className="flex flex-col gap-3 w-full max-w-[280px] mx-auto px-2">
