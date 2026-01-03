@@ -1,136 +1,108 @@
-'use client'
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { ThemeToggle } from '@/components/theme-toggle';
 // import { TypingEffect } from '@/components/TypingEffect';
 import {TypingEffect} from './components/TypingEffect';
-import { useRouter } from 'next/navigation';
-import { ArrowLeft } from 'lucide-react';
 
 export default function Home() {
-  const router = useRouter();
-     return (
-    <div className="min-h-screen flex flex-col w-full max-w-full overflow-x-hidden">
-      {/* Header - Mobile optimized */}
-      <header className="bg-card border-b border-border">
-        <div className="w-full max-w-full mx-auto px-3 py-2.5">
-          <div className="flex justify-end items-center gap-2">
-            <button
-              onClick={() => router.back()}
-              className="inline-flex items-center text-foreground hover:text-primary transition-colors group text-sm min-h-[36px] px-2.5"
-            >
-              <ArrowLeft className="w-4 h-4 mr-1.5 transition-transform group-hover:-translate-x-0.5" />
-              <span className="font-medium text-sm">Back</span>
-            </button>
-            <ThemeToggle />
-          </div>
-        </div>
+  return (
+    <div className="min-h-screen flex flex-col">
+      <header className="flex justify-end p-4">
+        <ThemeToggle />
       </header>
-
-      {/* Hero Section - Mobile optimized */}
-      <section className="py-6 text-center px-3 w-full max-w-full overflow-hidden">
-        {/* Main heading with better mobile line breaks */}
-        <h1 className="text-2xl font-bold text-blue-900 mb-4 leading-snug px-1">
-          Hi, I&apos;m{' '}
-          <span className="text-blue-600 block">
-            <TypingEffect
+      {/* Hero Section */}
+      <section className="py-12 md:py-20 text-center px-4">
+<h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-6">
+          Hi, I'm{' '}
+          <span className="text-blue-600 relative">
+            <TypingEffect 
               texts={[
                 'Aditya Joshi',
                 'AI/ML Developer',
                 'Full Stack Dev',
-                'Tech Enthusiast',
-              ]}
-              className="font-mono text-blue-600 text-2xl"
-              typingSpeed={80}
-              deletingSpeed={50}
+                'Tech Enthusiast'
+              ]} 
+              className="font-mono text-blue-600"
             />
           </span>
         </h1>
 
-        {/* Subtitle */}
-        <p className="text-sm text-foreground/70 mb-4 mx-auto leading-relaxed max-w-[90%]">
-          Crafting digital experiences with code and creativity
-        </p>
+  <p className="text-base sm:text-lg text-foreground/70 mb-4 max-w-2xl mx-auto">
+    Crafting digital experiences with code and creativity
+  </p>
 
-        {/* Typing subtitle – HARD mobile-safe */}
-<div className="min-h-[48px] mb-6 w-full max-w-full overflow-hidden flex justify-center">
-  <TypingEffect
-    texts={[
-      'AI/ML Developer',
-      'Java & Python',
-      'Full Stack Dev',
-      'Web & Mobile',
-      'Ideas into Reality',
-    ]}
-    className="w-full max-w-full flex justify-center overflow-hidden"
-    textClassName="
-      text-sm
-      text-gray-600 dark:text-gray-300
-      text-center
-      break-words
-      whitespace-normal
-      leading-relaxed
-      px-2
-      max-w-full
-    "
-    typingSpeed={90}
-    deletingSpeed={65}
-    pauseDelay={2000}
-  />
-</div>
+  <div className="min-h-[48px] mb-8 max-w-2xl mx-auto overflow-hidden">
+    <TypingEffect
+      texts={[
+        'AI/ML Developer | Java & Python Enthusiast | Frontend Developer',
+        'Intern at ARInspects | Building intelligent solutions',
+        'Passionate about technology and innovation',
+        'Turning ideas into reality with code'
+      ]}
+      className="w-full"
+      textClassName="
+      font-mono
+        text-lg
+        text-gray-500
+        text-center
+        break-words
+        whitespace-normal
+        leading-relaxed
+        px-2
+      "
+    />
+  </div>
 
-        {/* Buttons - Mobile optimized */}
-        <div className="flex flex-col gap-3 w-full max-w-[280px] mx-auto px-2">
-          <Link
-            href="/projects"
-            className="w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm text-center font-medium"
-          >
-            View My Work
-          </Link>
-          <Link
-            href="/contact"
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 text-blue-700 dark:text-blue-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm text-center font-medium"
-          >
-            Contact Me
-          </Link>
-        </div>
-      </section>
+  <div className="flex flex-col sm:flex-row justify-center gap-4">
+    <Link
+      href="/projects"
+      className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-center"
+    >
+      View My Work
+    </Link>
 
-      {/* About Section - Mobile optimized */}
-      <section className="py-8 bg-card border-t border-border">
-        <div className="w-full max-w-full mx-auto px-4">
-          <h2 className="text-xl font-bold text-blue-900 mb-4 text-center px-2">
-            About Me
-          </h2>
-          <p className="text-sm text-foreground/70 leading-relaxed text-center mx-auto px-3 max-w-[90%]">
-            I&apos;m a passionate developer with expertise in building modern web applications.
+    <Link
+      href="/contact"
+      className="px-6 py-3 border-2 border-gray-300 text-blue-700 rounded-lg hover:bg-gray-100 transition-colors text-center"
+    >
+      Contact Me
+    </Link>
+  </div>
+</section>
+
+      {/* About Section */}
+      {/* <section className="py-16 bg-gray-50"> */} 
+      {/* change 0017 */}
+      <section className="py-20 bg-card border-t border-border">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-8 text-foreground">About Me</h2>
+          {/* <h2 className="text-3xl font-bold text-center mb-8">About Me</h2> */}
+          {/* change 0017 */}
+          <p className="text-lg text-foreground/70 leading-relaxed">
+          {/* <p className="text-lg text-gray-700 leading-relaxed"> */}
+            I'm a passionate developer with expertise in building modern web applications.
             With a strong foundation in both frontend and backend technologies, I create
             efficient, scalable, and user-friendly solutions.
           </p>
         </div>
       </section>
-
-      {/* Skills Section - Mobile optimized */}
-      <section className="py-8">
-        <div className="w-full max-w-full mx-auto px-3">
-          <h2 className="text-lg font-bold text-center mb-6 px-2">
-            My Skills
-          </h2>
-          <div className="grid grid-cols-2 gap-2.5 px-1">
-            {['Java', 'Python', 'ML/AI', 'Frontend', 'DBMS', 'DSA', 'Next.js', 'React'].map(
-              (skill) => (
-                <div
-                  key={skill}
-                  className="p-3 bg-card text-card-foreground rounded-lg border border-border text-center flex items-center justify-center min-h-[55px]"
-                >
-                  <span className="text-sm font-medium">{skill}</span>
-                </div>
-              )
-            )}
+      <div className="h-px bg-border max-w-5xl mx-auto" />
+      {/* Skills Section */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">My Skills</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {['Java', 'Python', 'Machine Learning', 'AI', 'Frontend Development', 'DBMS', 'Data Structures', 'Algorithms'].map((skill) => (
+              <div key={skill} className="p-4 bg-card text-card-foreground rounded-lg border border-border text-center">
+              {/* <div key={skill} className="p-4 bg-white rounded-lg shadow-md text-center">  change 0017*/}
+                <span className="text-lg font-medium">{skill}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+      
     </div>
   );
 }

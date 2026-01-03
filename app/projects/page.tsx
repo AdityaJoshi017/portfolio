@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, ExternalLink, Github, FolderGit2, ArrowLeft, Calendar } from 'lucide-react';
 import { projects } from '@/app/data/projects';
@@ -40,7 +41,9 @@ export default function Projects() {
               <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 transition-transform group-hover:-translate-x-1" />
               <span className="font-medium">Back</span>
             </button>
-            <ThemeToggle className="scale-90 sm:scale-100" />
+<div className="scale-90 sm:scale-100">
+  <ThemeToggle />
+</div>
           </div>
         </div>
       </header>

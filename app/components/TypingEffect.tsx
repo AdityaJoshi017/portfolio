@@ -115,37 +115,24 @@ export function TypingEffect({
     pauseDelay,
   ])
 
-  const maxChars = Math.max(...texts.map((t) => t.length))
-
-  // return (
-  //   <div className={className}>
-  //     <span 
-  //       className={`inline-block ${textClassName}`}
-  //       style={{ minWidth: `${maxChars}ch` }}
-  //     >
-  //       {displayText}
-  //       <span className="animate-pulse">|</span>
-  //     </span>
-  //   </div>
-  // )
   return (
-  <div className={`relative w-full overflow-hidden ${className}`}>
-    <span
-      className={`block w-full text-center overflow-hidden whitespace-normal break-words ${textClassName}`}
-    >
-      {/* Animated text (does NOT control layout width) */}
-      <span className="inline-block max-w-full overflow-hidden align-middle">
-        {displayText}
-      </span>
-
-      {/* Cursor with FIXED WIDTH — prevents overflow */}
+    <span className={`relative inline-block w-full overflow-hidden ${className}`}>
       <span
-        className="inline-block w-[1ch] text-left align-middle animate-pulse"
-        aria-hidden
+        className={`block w-full text-center overflow-hidden whitespace-normal break-words ${textClassName}`}
       >
-        |
+        {/* Animated text (does NOT control layout width) */}
+        <span className="inline-block max-w-full overflow-hidden align-middle">
+          {displayText}
+        </span>
+
+        {/* Cursor with FIXED WIDTH — prevents overflow */}
+        <span
+          className="inline-block w-[1ch] text-left align-middle animate-pulse"
+          aria-hidden
+        >
+          |
+        </span>
       </span>
     </span>
-  </div>
-)
+  )
 }
