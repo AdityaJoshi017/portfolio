@@ -41,7 +41,7 @@ export default function Home() {
       ]}
       className="w-full"
       textClassName="
-      font-mono
+        font-mono
         text-lg
         text-gray-500
         text-center

@@ -28,7 +28,19 @@ export function ProjectView({ project }: ProjectViewProps) {
     height: 896
   });
   const [showResponsiveControls, setShowResponsiveControls] = useState(false);
-  //
+
+  // Set responsive mode on mobile devices on initial load
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      setDeviceType('responsive');
+      setShowResponsiveControls(false); // Keep controls closed by default
+      setPreviewSize({
+        width: 414,  // Mobile width
+        height: 896  // Mobile height
+      });
+    }
+  }, []); // Empty dependency array means this runs once on mount
+
 const SOURCES = [
   "https://efootball-stats-six.vercel.app/",
   "https://efootball-stats-six.vercel.app/"

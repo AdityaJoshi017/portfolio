@@ -112,7 +112,7 @@ export default function ContactPage() {
                         <h3 className="text-base sm:text-lg font-medium text-foreground group-hover:text-blue-500 transition-colors">
                           {social.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground truncate">
+                        <p className="text-sm text-gray-400 dark:text-muted-foreground truncate">
                           {social.url.replace(/^https?:\/\//, '').split('/')[0]}
                         </p>
                       </div>
