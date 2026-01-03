@@ -111,22 +111,30 @@ export default function Projects() {
               <div className="relative bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-200 flex-1 flex flex-col">
                 <div className="h-36 bg-gradient-to-br from-blue-500/90 via-purple-600/90 to-indigo-700/90 flex items-center justify-center relative overflow-hidden">
                   <div className="text-center p-4 text-white z-10 w-full">
-                    <motion.div
-                      initial={{ rotate: 0 }}
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      className="inline-block"
-                    >
-                      <FolderGit2 className="w-10 h-10 mx-auto mb-2 drop-shadow-lg" />
-                    </motion.article>
-                    <h3 className="text-lg font-bold mb-1 line-clamp-1">
-                      {project.title}
-                    </h3>
-                    <div className="flex items-center justify-center gap-1 text-xs opacity-90">
-                      <Calendar className="w-3 h-3" />
-                      <span>{new Date(project.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
-                    </div>
-                  </div>
+  <motion.div
+    initial={{ rotate: 0 }}
+    animate={{ rotate: 360 }}
+    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+    className="inline-block"
+  >
+    <FolderGit2 className="w-10 h-10 mx-auto mb-2 drop-shadow-lg" />
+  </motion.div>
+
+  <h3 className="text-lg font-bold mb-1 line-clamp-1">
+    {project.title}
+  </h3>
+
+  <div className="flex items-center justify-center gap-1 text-xs opacity-90">
+    <Calendar className="w-3 h-3" />
+    <span>
+      {new Date(project.date).toLocaleDateString('en-US', {
+        month: 'short',
+        year: 'numeric',
+      })}
+    </span>
+  </div>
+</div>
+
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 </div>
                 
