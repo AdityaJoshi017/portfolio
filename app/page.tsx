@@ -8,31 +8,30 @@ import { ArrowLeft } from 'lucide-react';
 
 export default function Home() {
   const router = useRouter();
-   return (
+     return (
     <div className="min-h-screen flex flex-col w-full max-w-full overflow-x-hidden">
-      {/* Header */}
+      {/* Header - Mobile optimized */}
       <header className="bg-card border-b border-border">
-        <div className="w-full max-w-full md:max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4">
-          <div className="flex justify-end items-center gap-2 sm:gap-3">
+        <div className="w-full max-w-full mx-auto px-3 py-2.5">
+          <div className="flex justify-end items-center gap-2">
             <button
               onClick={() => router.back()}
-              className="inline-flex items-center text-foreground hover:text-primary transition-colors group text-sm sm:text-base min-h-[36px] px-2 sm:px-3"
+              className="inline-flex items-center text-foreground hover:text-primary transition-colors group text-sm min-h-[36px] px-2.5"
             >
-              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 transition-transform group-hover:-translate-x-0.5" />
-              <span className="font-medium">Back</span>
+              <ArrowLeft className="w-4 h-4 mr-1.5 transition-transform group-hover:-translate-x-0.5" />
+              <span className="font-medium text-sm">Back</span>
             </button>
-
-            {/* ❌ scale-75 REMOVED */}
             <ThemeToggle />
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="py-6 sm:py-8 md:py-16 text-center px-3 sm:px-4 md:px-6 w-full max-w-full overflow-hidden">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-blue-900 mb-4 leading-tight">
+      {/* Hero Section - Mobile optimized */}
+      <section className="py-6 text-center px-3 w-full max-w-full overflow-hidden">
+        {/* Main heading with better mobile line breaks */}
+        <h1 className="text-2xl font-bold text-blue-900 mb-4 leading-snug px-1">
           Hi, I&apos;m{' '}
-          <span className="text-blue-600 block sm:inline">
+          <span className="text-blue-600 block">
             <TypingEffect
               texts={[
                 'Aditya Joshi',
@@ -40,68 +39,70 @@ export default function Home() {
                 'Full Stack Dev',
                 'Tech Enthusiast',
               ]}
-              className="font-mono text-blue-600 text-2xl sm:text-3xl md:text-5xl lg:text-6xl"
+              className="font-mono text-blue-600 text-2xl"
+              typingSpeed={80}
+              deletingSpeed={50}
             />
           </span>
         </h1>
 
-        <p className="text-sm sm:text-lg md:text-xl text-foreground/70 mb-6 max-w-2xl mx-auto leading-relaxed">
+        {/* Subtitle */}
+        <p className="text-sm text-foreground/70 mb-4 mx-auto leading-relaxed max-w-[90%]">
           Crafting digital experiences with code and creativity
         </p>
 
-        {/* Typing subtitle — mobile safe */}
-        <div className="min-h-[56px] mb-6 w-full max-w-full overflow-hidden px-2">
-  <TypingEffect
-    texts={[
-      'AI/ML Developer',
-      'Java & Python Expert',
-      'Full Stack Developer',
-      'Web & Mobile Specialist',
-      'Turning ideas into reality',
-    ]}
-    className="w-full max-w-full"
-    textClassName="
-      text-sm xs:text-base sm:text-lg md:text-xl
-      text-gray-600 dark:text-gray-300
-      text-center
-      break-all sm:break-words
-      hyphens-auto
-      leading-relaxed
-      px-1
-      mx-auto
-      max-w-[95vw] sm:max-w-2xl
-    "
-    typingSpeed={70}
-    deletingSpeed={50}
-    pauseTime={2000}
-  />
-</div>
+        {/* Typing subtitle - Mobile safe */}
+        <div className="min-h-[48px] mb-6 w-full overflow-hidden">
+          <TypingEffect
+            texts={[
+              'AI/ML Developer',
+              'Java & Python',
+              'Full Stack Dev',
+              'Web & Mobile',
+              'Ideas into Reality',
+            ]}
+            className="w-full"
+            textClassName="
+              text-sm
+              text-gray-600 dark:text-gray-300
+              text-center
+              break-words
+              hyphens-auto
+              leading-relaxed
+              px-2
+              mx-auto
+              max-w-[95%]
+            "
+            typingSpeed={70}
+            deletingSpeed={50}
+            pauseTime={2000}
+          />
+        </div>
 
-        {/* Buttons — NEVER overflow */}
-        <div className="flex flex-col sm:flex-row justify-center gap-3 w-full max-w-full sm:max-w-md mx-auto px-4 sm:px-0">
+        {/* Buttons - Mobile optimized */}
+        <div className="flex flex-col gap-3 w-full max-w-[280px] mx-auto px-2">
           <Link
             href="/projects"
-            className="w-full sm:w-auto px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base text-center"
+            className="w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm text-center font-medium"
           >
             View My Work
           </Link>
-
           <Link
             href="/contact"
-            className="w-full sm:w-auto px-4 py-2.5 border border-gray-300 dark:border-gray-600 text-blue-700 dark:text-blue-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm sm:text-base text-center"
+            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 text-blue-700 dark:text-blue-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm text-center font-medium"
           >
             Contact Me
           </Link>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-10 sm:py-12 md:py-16 bg-card border-t border-border">
-        <div className="w-full max-w-full md:max-w-4xl mx-auto px-4 sm:px-5 md:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-4 text-center">
+      {/* About Section - Mobile optimized */}
+      <section className="py-8 bg-card border-t border-border">
+        <div className="w-full max-w-full mx-auto px-4">
+          <h2 className="text-xl font-bold text-blue-900 mb-4 text-center px-2">
             About Me
           </h2>
-          <p className="text-sm sm:text-base text-foreground/70 leading-relaxed text-center max-w-2xl mx-auto">
+          <p className="text-sm text-foreground/70 leading-relaxed text-center mx-auto px-3 max-w-[90%]">
             I&apos;m a passionate developer with expertise in building modern web applications.
             With a strong foundation in both frontend and backend technologies, I create
             efficient, scalable, and user-friendly solutions.
@@ -109,18 +110,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="py-8 sm:py-12 md:py-16">
-        <div className="w-full max-w-full md:max-w-4xl mx-auto px-3 sm:px-4 md:px-6">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-8">
+      {/* Skills Section - Mobile optimized */}
+      <section className="py-8">
+        <div className="w-full max-w-full mx-auto px-3">
+          <h2 className="text-lg font-bold text-center mb-6 px-2">
             My Skills
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 gap-2.5 px-1">
             {['Java', 'Python', 'ML/AI', 'Frontend', 'DBMS', 'DSA', 'Next.js', 'React'].map(
               (skill) => (
                 <div
                   key={skill}
-                  className="p-3 bg-card text-card-foreground rounded-lg border border-border text-center flex items-center justify-center min-h-[60px]"
+                  className="p-3 bg-card text-card-foreground rounded-lg border border-border text-center flex items-center justify-center min-h-[55px]"
                 >
                   <span className="text-sm font-medium">{skill}</span>
                 </div>
