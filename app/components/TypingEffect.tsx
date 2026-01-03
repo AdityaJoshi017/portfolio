@@ -45,144 +45,14 @@
 //     return () => clearTimeout(timer);
 //   }, [charIndex, currentIndex, isDeleting, texts, typingSpeed]);
 
-//   // Calculate the maximum width needed for the container
-//   const maxTextLength = Math.max(...texts.map(text => text.length));
-//   const averageCharWidth = 8; // Approximate width of a character in pixels
-//   const containerWidth = `${maxTextLength * averageCharWidth}px`;
-
-//   return (
-//     <span className={`inline-block min-w-[${containerWidth}] text-left ${className}`}>
-//       <span className="inline-block">
-//         {displayText}
-//         <span className="animate-pulse">|</span>
-//       </span>
-//     </span>
-//   );
-// }
-// 'use client'
-// import { useEffect, useState } from 'react'
-
-// export function TypingEffect({
-//   texts,
-//   className = '',
-// }: {
-//   texts: string[]
-//   className?: string
-// }) {
-//   const [displayText, setDisplayText] = useState('')
-//   const [currentIndex, setCurrentIndex] = useState(0)
-//   const [charIndex, setCharIndex] = useState(0)
-//   const [isDeleting, setIsDeleting] = useState(false)
-
-//   useEffect(() => {
-//     const currentText = texts[currentIndex]
-
-//     const timeout = setTimeout(
-//       () => {
-//         if (!isDeleting) {
-//           setDisplayText(currentText.slice(0, charIndex + 1))
-//           setCharIndex((c) => c + 1)
-
-//           if (charIndex === currentText.length) {
-//             setTimeout(() => setIsDeleting(true), 1000)
-//           }
-//         } else {
-//           setDisplayText(currentText.slice(0, charIndex - 1))
-//           setCharIndex((c) => c - 1)
-
-//           if (charIndex === 0) {
-//             setIsDeleting(false)
-//             setCurrentIndex((i) => (i + 1) % texts.length)
-//           }
-//         }
-//       },
-//       isDeleting ? 60 : 120
-//     )
-
-//     return () => clearTimeout(timeout)
-//   }, [charIndex, currentIndex, isDeleting, texts])
-
-//   // 🔒 FIXED WIDTH (in ch units – perfect for text)
-//   const maxChars = Math.max(...texts.map((t) => t.length))
-
-//   return (
-//     <span
-//       className={`inline-block text-left ${className}`}
-//       style={{ minWidth: `${maxChars}ch` }}
-//     >
-//       {displayText}
-//       <span className="animate-pulse">|</span>
-//     </span>
-//   )
-// }
-  // 'use client'
-
-  // import { useEffect, useState } from 'react'
-
-  // type TypingEffectProps = {
-  //   texts: string[]
-  //   className?: string
-  //   typingSpeed?: number
-  //   deletingSpeed?: number
-  //   pauseDelay?: number
-  // }
-
-  // export function TypingEffect({
-  //   texts,
-  //   className = '',
-  //   typingSpeed = 120,
-  //   deletingSpeed = 60,
-  //   pauseDelay = 1000,
-  // }: TypingEffectProps) {
-  //   const [displayText, setDisplayText] = useState('')
-  //   const [currentIndex, setCurrentIndex] = useState(0)
-  //   const [charIndex, setCharIndex] = useState(0)
-  //   const [isDeleting, setIsDeleting] = useState(false)
-
-  //   useEffect(() => {
-  //     const currentText = texts[currentIndex]
-
-  //     const timeout = setTimeout(() => {
-  //       if (!isDeleting) {
-  //         setDisplayText(currentText.slice(0, charIndex + 1))
-  //         setCharIndex((c) => c + 1)
-
-  //         if (charIndex === currentText.length) {
-  //           setTimeout(() => setIsDeleting(true), pauseDelay)
-  //         }
-  //       } else {
-  //         setDisplayText(currentText.slice(0, charIndex - 1))
-  //         setCharIndex((c) => c - 1)
-
-  //         if (charIndex === 0) {
-  //           setIsDeleting(false)
-  //           setCurrentIndex((i) => (i + 1) % texts.length)
-  //         }
-  //       }
-  //     }, isDeleting ? deletingSpeed : typingSpeed)
-
-  //     return () => clearTimeout(timeout)
-  //   }, [charIndex, currentIndex, isDeleting, texts, typingSpeed, deletingSpeed, pauseDelay])
-
-  //   const maxChars = Math.max(...texts.map((t) => t.length))
-
-  //   return (
-  //     <span
-  //       className={`inline-block text-left font-mono ${className}`}
-  //       style={{ minWidth: `${maxChars}ch` }}
-  //     >
-  //       {displayText}
-  //       <span className="animate-pulse">|</span>
-  //     </span>
-  //   )
-  // }
 'use client'
 
 import { useEffect, useState } from 'react'
 
-type TypingEffectProps = {
+interface TypingEffectProps {
   texts: string[]
   className?: string
+  textClassName?: string
   typingSpeed?: number
   deletingSpeed?: number
   pauseDelay?: number
@@ -191,6 +61,7 @@ type TypingEffectProps = {
 export function TypingEffect({
   texts,
   className = '',
+  textClassName = '',
   typingSpeed = 120,
   deletingSpeed = 60,
   pauseDelay = 1000,
@@ -247,12 +118,14 @@ export function TypingEffect({
   const maxChars = Math.max(...texts.map((t) => t.length))
 
   return (
-    <span
-      className={`inline-block text-left font-mono ${className}`}
-      style={{ minWidth: `${maxChars}ch` }}
-    >
-      {displayText}
-      <span className="animate-pulse">|</span>
-    </span>
+    <div className={className}>
+      <span 
+        className={`inline-block ${textClassName}`}
+        style={{ minWidth: `${maxChars}ch` }}
+      >
+        {displayText}
+        <span className="animate-pulse">|</span>
+      </span>
+    </div>
   )
 }

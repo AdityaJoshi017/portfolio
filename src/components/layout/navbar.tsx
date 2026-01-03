@@ -26,22 +26,29 @@ export default function Navbar() {
     <header
       className={cn(
         'fixed top-0 z-50 w-full transition-all duration-200',
-        scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-white/50'
+        'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md',
+        scrolled ? 'shadow-sm' : ''
       )}
     >
-      <nav className="mx-auto max-w-7xl px-6 lg:px-8 py-4">
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-semibold text-gray-900">
-            Your Name
+          <Link 
+            href="/" 
+            className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white whitespace-nowrap"
+          >
+            Aditya Joshi
           </Link>
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'text-sm font-medium transition-colors hover:text-gray-900',
-                  pathname === link.href ? 'text-gray-900' : 'text-gray-500'
+                  'text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400',
+                  'px-2 py-1 rounded-md',
+                  pathname === link.href 
+                    ? 'text-blue-600 dark:text-blue-400' 
+                    : 'text-gray-700 dark:text-gray-300'
                 )}
               >
                 {link.name}
