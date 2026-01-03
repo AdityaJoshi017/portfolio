@@ -9,7 +9,8 @@ import { ArrowLeft } from 'lucide-react';
 export default function Home() {
   const router = useRouter();
      return (
-    <div className="min-h-screen flex flex-col w-full max-w-full overflow-x-hidden">
+    // <div className="min-h-screen flex flex-col w-full max-w-full overflow-x-hidden">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden">
       {/* Header - Mobile optimized */}
       <header className="bg-card border-b border-border">
         <div className="w-full max-w-full mx-auto px-3 py-2.5">
@@ -61,18 +62,14 @@ export default function Home() {
               'Web & Mobile',
               'Ideas into Reality',
             ]}
-            className="w-full"
-            textClassName="
-              text-sm
-              text-gray-600 dark:text-gray-300
-              text-center
-              break-words
-              hyphens-auto
-              leading-relaxed
-              px-2
-              mx-auto
-              max-w-[95%]
-            "
+              className="w-full max-w-full"
+    textClassName="
+      w-full
+      max-w-full
+      break-words
+      whitespace-normal
+      text-center
+    "
             typingSpeed={70}
             deletingSpeed={50}
             pauseTime={2000}
