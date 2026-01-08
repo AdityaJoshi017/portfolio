@@ -35,7 +35,6 @@ export default function Home() {
     <TypingEffect
       texts={[
         'AI/ML Developer | Java & Python Enthusiast | Frontend Developer',
-        'Intern at ARInspects | Building intelligent solutions',
         'Passionate about technology and innovation',
         'Turning ideas into reality with code'
       ]}
